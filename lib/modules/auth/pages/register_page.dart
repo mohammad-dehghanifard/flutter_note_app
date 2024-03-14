@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/core/widgets/button_widget.dart';
 import 'package:flutter_note_app/core/widgets/text_field_widget.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +23,9 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: 24),
                 const Text("دوست من خیلی خوش اومدی، اسمتو بهم بگو تا کارمون رو شروع کینم."),
                 const SizedBox(height: 24),
-                const TextFieldWidget(hint: "نام کاربریت رو وارد کن..",)
+                const TextFieldWidget(hint: "نام کاربریت رو وارد کن..",),
+                const SizedBox(height: 24),
+                ButtonWidget(text: "بزن بریم!",onTap: () {},)
               ],
             ),
           ),
