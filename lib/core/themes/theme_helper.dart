@@ -9,6 +9,9 @@ class ThemeHelper {
       secondary: Color(0xFF01F0FF),
       primaryContainer : Color(0xFF48484A),
 
+    ),
+    textTheme: TextTheme(
+      bodyMedium: TextStyle(color: Colors.white)
     )
   );
 }
