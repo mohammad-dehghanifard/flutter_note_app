@@ -12,22 +12,18 @@ class SplashPage extends StatelessWidget {
       init: SplashController(),
       builder: (controller) {
         return Scaffold(
-            body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Note App"),
-              const SizedBox(height: 24),
-              SpinKitPulse(
-                color: context.theme.colorScheme.secondary,
-                size: 30.0,
-              )
-            ],
-          ),
-        ));
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Note App"),
+                const SizedBox(height: 24),
+                SpinKitPulse(
+                  color: context.theme.colorScheme.primary,
+                  size: 30.0,
+                )
+              ],
+            ));
       }
     );
   }

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       title: 'Note app',
       theme: ThemeHelper.dark,
+      locale: const Locale("fa"),
       debugShowCheckedModeBanner: false,
       home: const SplashPage(),
     );
