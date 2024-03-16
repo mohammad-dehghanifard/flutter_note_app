@@ -11,39 +11,30 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25),
-          child: GetBuilder<NavigationController>(
-            init: NavigationController(),
-            builder: (controller) {
-              return Stack(
-                children: [
-                   Positioned.fill(
-                    child: IndexedStack(
-                      index: controller.selectedIndex,
-                      children: const [
-                        HomePage(),
-                        AllNotePage(),
-                        SettingPage()
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                      right: 10,
-                      left: 10,
-                      child: BottomNavigationWidget(
-                        onChangePage: (index) => controller.changePage(index),
-                      )
-                  )
-                ],
-              );
-            }
+    return  GetBuilder<NavigationController>(
+      init: NavigationController(),
+      builder: (controller) {
+        return Scaffold(
+          bottomNavigationBar: BottomNavigationWidget(
+            onChangePage: (index) => controller.changePage(index),
           ),
-        ),
-      ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(25),
+              child: Positioned.fill(
+                child: IndexedStack(
+                  index: controller.selectedIndex,
+                  children: const [
+                    HomePage(),
+                    AllNotePage(),
+                    SettingPage()
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      }
     );
   }
 }

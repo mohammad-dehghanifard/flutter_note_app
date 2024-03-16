@@ -13,6 +13,7 @@ class BottomNavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(25),
       width: MediaQuery.sizeOf(context).width,
       height: 48,
       decoration: BoxDecoration(
