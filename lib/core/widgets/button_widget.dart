@@ -22,7 +22,9 @@ class ButtonWidget extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [context.theme.colorScheme.primary,context.theme.colorScheme.secondary]
+            colors: [context.theme.colorScheme.primary,context.theme.colorScheme.secondary],
+            begin: Alignment.topRight,
+            end: Alignment.bottomRight
           ),
           borderRadius: BorderRadius.circular(12)
         ),
