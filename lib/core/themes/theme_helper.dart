@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ThemeHelper {
   static final ThemeData dark = ThemeData(
+    fontFamily: "Shabnam",
     useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFF202326),
     colorScheme: const ColorScheme.dark(
