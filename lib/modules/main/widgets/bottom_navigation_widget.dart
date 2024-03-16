@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/modules/main/controllers/navigation_controller.dart';
 import 'package:get/get.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
@@ -18,22 +19,26 @@ class BottomNavigationWidget extends StatelessWidget {
           color: context.theme.colorScheme.primaryContainer.withOpacity(0.30),
           borderRadius: BorderRadius.circular(100)
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _NavigationItemWidget(
-              onTap: () {onChangePage(0);},
-              selected: false,
-              icon: CupertinoIcons.home),
-         _NavigationItemWidget(
-              onTap: () {onChangePage(1);},
-             selected: true,
-              icon: Icons.event_note),
-          _NavigationItemWidget(
-              onTap: () {onChangePage(2);},
-              selected: false,
-              icon: CupertinoIcons.settings),
-        ],
+      child: GetBuilder<NavigationController>(
+        builder: (controller) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _NavigationItemWidget(
+                  onTap: () {onChangePage(0);},
+                  selected: controller.selectedIndex == 0,
+                  icon: CupertinoIcons.home),
+             _NavigationItemWidget(
+                  onTap: () {onChangePage(1);},
+                 selected: controller.selectedIndex == 1,
+                  icon: Icons.event_note),
+              _NavigationItemWidget(
+                  onTap: () {onChangePage(2);},
+                  selected: controller.selectedIndex == 2,
+                  icon: CupertinoIcons.settings),
+            ],
+          );
+        }
       ),
     );
   }
