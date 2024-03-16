@@ -9,6 +9,10 @@ class ThemeHelper {
       secondary: Color(0xFF4441ED),
       primaryContainer : Color(0xFF48484A)
     ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Color(0xFF202326),
+      surfaceTintColor: Colors.transparent
+    ),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(color: Colors.white)
     )

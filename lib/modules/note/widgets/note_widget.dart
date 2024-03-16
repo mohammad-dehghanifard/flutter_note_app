@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/modules/note/widgets/note_action_bottom_sheet.dart';
 import 'package:get/get.dart';
 
 class NoteWidget extends StatelessWidget {
@@ -26,7 +27,9 @@ class NoteWidget extends StatelessWidget {
             children: [
               Text(title),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(context: context, builder: (context) => const NoteActionBottomSheet());
+                  },
                   icon: const Icon(Icons.more_vert)),
             ],
           ),
