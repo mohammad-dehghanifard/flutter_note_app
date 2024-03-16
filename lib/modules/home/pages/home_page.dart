@@ -7,33 +7,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("نوشته ها"),
-              const SizedBox(height: 12),
-              Expanded(
-                  child: GridView.builder(
-                      itemCount: 10,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        mainAxisExtent: MediaQuery.sizeOf(context).height / 9
-                      ),
-                      itemBuilder: (context, index) {
-                        return NoteCategoryWidget(title: "یادداشت شخصی",notes: index * 2);
-                      },
-                  )
-              )
-            ],
-          ),
-        ),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text("نوشته ها"),
+        const SizedBox(height: 12),
+        Expanded(
+            child: GridView.builder(
+              itemCount: 10,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  mainAxisExtent: MediaQuery.sizeOf(context).height / 9
+              ),
+              itemBuilder: (context, index) => NoteCategoryWidget(title: "یادداشت شخصی",notes: index * 2),
+            )
+        )
+      ],
     );
   }
 }
