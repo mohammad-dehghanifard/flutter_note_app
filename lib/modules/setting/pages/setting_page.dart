@@ -19,6 +19,7 @@ class SettingPage extends StatelessWidget {
       SettingButtonWidget(onTap: () => Get.to(const SetPassWordPage()), title: "تنظیم رمز عبور", icon: Icons.lock),
       SettingButtonWidget(onTap: () {}, title: "مشاهده نوشته های مورد علاقه", icon: Icons.favorite),
       SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
+      SettingButtonWidget(onTap: () {}, title: "انتخاب تصویر پروفایل", icon: Icons.person),
     ];
 
     return  Column(
