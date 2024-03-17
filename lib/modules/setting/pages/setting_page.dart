@@ -17,6 +17,7 @@ class SettingPage extends StatelessWidget {
         showDialog(context: context, builder: (context) => const ChangeUserNameDialogWidget());
       }, title: "تغییر نام کاربری", icon: Icons.edit),
       SettingButtonWidget(onTap: () => Get.to(const SetPassWordPage()), title: "تنظیم رمز عبور", icon: Icons.lock),
+      SettingButtonWidget(onTap: () {}, title: "ایجاد دسته بندی جدید", icon: Icons.category),
       SettingButtonWidget(onTap: () {}, title: "مشاهده نوشته های مورد علاقه", icon: Icons.favorite),
       SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
       SettingButtonWidget(onTap: () {}, title: "انتخاب تصویر پروفایل", icon: Icons.person),
