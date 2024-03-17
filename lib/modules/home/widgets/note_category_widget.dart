@@ -22,6 +22,7 @@ class NoteCategoryWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(title),
+          const SizedBox(height: 4),
           Text("$notes نوشته"),
         ],
       ),
