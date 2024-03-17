@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_note_app/modules/main/controllers/navigation_controller.dart';
 import 'package:get/get.dart';
 
@@ -13,12 +14,16 @@ class BottomNavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(25),
+      padding: const EdgeInsets.symmetric(vertical: 2),
       width: MediaQuery.sizeOf(context).width,
       height: 48,
       decoration: BoxDecoration(
           color: context.theme.colorScheme.primaryContainer.withOpacity(0.30),
-          borderRadius: BorderRadius.circular(100)
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(32),
+              topRight: Radius.circular(32),
+          ),
+          border: const Border(top: BorderSide(color: Colors.white))
       ),
       child: GetBuilder<NavigationController>(
         builder: (controller) {
@@ -29,17 +34,52 @@ class BottomNavigationWidget extends StatelessWidget {
                   onTap: () {onChangePage(0);},
                   selected: controller.selectedIndex == 0,
                   icon: CupertinoIcons.home),
-             _NavigationItemWidget(
-                  onTap: () {onChangePage(1);},
-                 selected: controller.selectedIndex == 1,
-                  icon: Icons.event_note),
+
               _NavigationItemWidget(
+                  onTap: () {onChangePage(1);},
+                  selected: controller.selectedIndex == 1,
+                  icon: Icons.event_note),
+
+             // add button
+              const _NavigationAddButton(),
+
+             _NavigationItemWidget(
                   onTap: () {onChangePage(2);},
-                  selected: controller.selectedIndex == 2,
+                 selected: controller.selectedIndex == 2,
+                  icon: Icons.favorite),
+              _NavigationItemWidget(
+                  onTap: () {onChangePage(3);},
+                  selected: controller.selectedIndex == 3,
                   icon: CupertinoIcons.settings),
             ],
           );
         }
+      ),
+    );
+  }
+}
+
+class _NavigationAddButton extends StatelessWidget {
+  const _NavigationAddButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+
+      },
+      child: Container(
+        width: 60,
+        height: 60,
+        margin: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white30),
+          shape: BoxShape.circle,
+          color: context.theme.colorScheme.secondary
+        ),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -59,10 +99,10 @@ class _NavigationItemWidget extends StatelessWidget {
     return Stack(
       children: [
         AnimatedContainer(
-          margin: const EdgeInsets.symmetric(vertical: 4),
+          margin: const EdgeInsets.all(3),
               duration: const Duration(milliseconds: 500),
-              width: selected? 45 : 0,
-              height: selected? 45 : 0,
+              width: selected? 40 : 0,
+              height: selected? 40 : 0,
             decoration: BoxDecoration(
               color: context.theme.colorScheme.secondary,
               shape: BoxShape.circle

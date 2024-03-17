@@ -3,6 +3,7 @@ import 'package:flutter_note_app/modules/home/pages/home_page.dart';
 import 'package:flutter_note_app/modules/main/controllers/navigation_controller.dart';
 import 'package:flutter_note_app/modules/main/widgets/bottom_navigation_widget.dart';
 import 'package:flutter_note_app/modules/note/pages/all_note_page.dart';
+import 'package:flutter_note_app/modules/note/pages/favorite_note_page.dart';
 import 'package:flutter_note_app/modules/setting/pages/setting_page.dart';
 import 'package:get/get.dart';
 
@@ -27,6 +28,7 @@ class MainPage extends StatelessWidget {
                   children:  const [
                     HomePage(),
                     AllNotePage(),
+                    FavoriteNotePage(),
                     SettingPage()
                   ],
                 ),
