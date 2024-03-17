@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/modules/setting/widgets/chnage_username_dialog_widget.dart';
 import 'package:flutter_note_app/modules/setting/widgets/setting_button_widget.dart';
 
 class SettingPage extends StatelessWidget {
-   SettingPage({super.key});
+   const SettingPage({super.key});
 
-  final List<SettingButtonWidget> buttons = [
-    SettingButtonWidget(onTap: () {}, title: "تغییر نام کاربری", icon: Icons.edit),
-    SettingButtonWidget(onTap: () {}, title: "تنظیم رمز عبور", icon: Icons.lock),
-    SettingButtonWidget(onTap: () {}, title: "مشاهده نوشته های مورد علاقه", icon: Icons.favorite),
-    SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+
+    final List<SettingButtonWidget> buttons = [
+      SettingButtonWidget(onTap: () {
+        showDialog(context: context, builder: (context) => const ChangeUserNameDialogWidget());
+      }, title: "تغییر نام کاربری", icon: Icons.edit),
+      SettingButtonWidget(onTap: () {
+
+      }, title: "تنظیم رمز عبور", icon: Icons.lock),
+      SettingButtonWidget(onTap: () {}, title: "مشاهده نوشته های مورد علاقه", icon: Icons.favorite),
+      SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
+    ];
+
     return  Column(
       children: [
         const Row(

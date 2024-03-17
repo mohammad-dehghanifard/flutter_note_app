@@ -14,6 +14,10 @@ class ThemeHelper {
       backgroundColor: Color(0xFF202326),
       surfaceTintColor: Colors.transparent
     ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Color(0xFF343434),
+      surfaceTintColor: Colors.transparent
+    ),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(color: Colors.white)
     )

@@ -24,9 +24,9 @@ class MainPage extends StatelessWidget {
               child: Positioned.fill(
                 child: IndexedStack(
                   index: controller.selectedIndex,
-                  children:  [
-                    const HomePage(),
-                    const AllNotePage(),
+                  children:  const [
+                    HomePage(),
+                    AllNotePage(),
                     SettingPage()
                   ],
                 ),
