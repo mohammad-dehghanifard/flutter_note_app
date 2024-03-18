@@ -1,0 +1,6 @@
+class StorageKeys {
+  StorageKeys._();
+  static const hiveCategoryKey = "HiveCategory";
+  static const hiveNoteKey = "HiveNote";
+  static const isFirst = "isFirst";
+}
