@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/core/database/models/note.dart';
 import 'package:flutter_note_app/modules/note/widgets/note_action_bottom_sheet.dart';
 import 'package:get/get.dart';
 
 class NoteWidget extends StatelessWidget {
   const NoteWidget({
-    super.key, required this.title, required this.content,
+    super.key, required this.note,
   });
-  final String title;
-  final String content;
+  final Note note;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class NoteWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title),
+              Text(note.title!),
               IconButton(
                   onPressed: () {
-                    showModalBottomSheet(context: context, builder: (context) => const NoteActionBottomSheet());
+                    showModalBottomSheet(context: context, builder: (context) => NoteActionBottomSheet(liked: note.isFavorite));
                   },
                   icon: const Icon(Icons.more_vert)),
             ],
@@ -37,7 +37,7 @@ class NoteWidget extends StatelessWidget {
           SizedBox(
             width: MediaQuery.sizeOf(context).width,
             child:  Text(
-              content,
+              note.content!,
               maxLines: 3,
               textAlign: TextAlign.justify,
               overflow: TextOverflow.ellipsis,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_note_app/core/database/models/note.dart';
 import 'package:flutter_note_app/core/widgets/text_field_widget.dart';
+import 'package:flutter_note_app/modules/main/controllers/navigation_controller.dart';
 import 'package:flutter_note_app/modules/note/controllers/add_or_edit_note_controller.dart';
 import 'package:flutter_note_app/modules/note/widgets/selecte_category_bottom_sheet_widgte.dart';
 import 'package:get/get.dart';
@@ -12,48 +13,52 @@ class AddOrEditNotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: context.theme.colorScheme.secondary,
-        child: const Icon(CupertinoIcons.checkmark_alt,color: Colors.white,size: 42),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 0),
-          child: SingleChildScrollView(
-            child: GetBuilder<AddOrEditNoteController>(
-              init: AddOrEditNoteController(note: note),
-              builder: (controller) {
-                return Column(
+    return  GetBuilder<AddOrEditNoteController>(
+      init: AddOrEditNoteController(note: note),
+      builder: (controller) {
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Get.back();
+              Get.find<NavigationController>().changePage(1);
+              controller.addOrEditNote();
+            },
+            backgroundColor: context.theme.colorScheme.secondary,
+            child: const Icon(CupertinoIcons.checkmark_alt,color: Colors.white,size: 42),
+          ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 0),
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
                     const Align(
                         alignment: Alignment.topLeft,
                         child: Directionality(
                             textDirection: TextDirection.ltr,
                             child: BackButton())),
-                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.04),
                     // title
-                     TextFieldWidget(
-                       controller: controller.noteTitle,
+                    TextFieldWidget(
+                        controller: controller.noteTitle,
                         hint: "عنوان نوشته را وارد کنید",
                         hasBorder: false),
                     // content
-                     TextFieldWidget(
-                         controller: controller.noteContent,
-                         hint: "متن نوشته را وارد کنید...",
-                         hasBorder: false,maxLine: 20),
+                    TextFieldWidget(
+                        controller: controller.noteContent,
+                        hint: "متن نوشته را وارد کنید...",
+                        hasBorder: false,maxLine: 20),
                     // select category
                     GestureDetector(
                       onTap: () {
                         showModalBottomSheet(
-                            context: context,
-                            builder: (context) => SelectCategoryBottomSheetWidget(
-                              oncChange: (newCategory) {
-                                Get.back();
-                                controller.setCategory(newCategory);
-                              },
-                            ),
+                          context: context,
+                          builder: (context) => SelectCategoryBottomSheetWidget(
+                            oncChange: (newCategory) {
+                              Get.back();
+                              controller.setCategory(newCategory);
+                            },
+                          ),
                         );
                       },
                       child: Container(
@@ -61,8 +66,8 @@ class AddOrEditNotePage extends StatelessWidget {
                         height: 48,
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: context.theme.colorScheme.primaryContainer
+                            borderRadius: BorderRadius.circular(12),
+                            color: context.theme.colorScheme.primaryContainer
                         ),
                         child:  Row(
                           children: [
@@ -74,12 +79,12 @@ class AddOrEditNotePage extends StatelessWidget {
                       ),
                     )
                   ],
-                );
-              }
+                )
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 }

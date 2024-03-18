@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 
 class HomeController extends GetxController {
 //============================ Variables =======================================
-  final categoryBox = Hive.box<Category>(StorageKeys.hiveCategoryKey);
+  final Box<Category> categoryBox = Hive.box<Category>(StorageKeys.hiveCategoryKey);
   final TextEditingController newCategoryTextController = TextEditingController();
   final List<Category> categoryList = [];
 

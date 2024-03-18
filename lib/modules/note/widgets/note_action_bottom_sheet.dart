@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NoteActionBottomSheet extends StatelessWidget {
-  const NoteActionBottomSheet({super.key});
-
+  const NoteActionBottomSheet({super.key, required this.liked});
+  final bool liked;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,8 +22,8 @@ class NoteActionBottomSheet extends StatelessWidget {
             onTap: () {},
           ),
           _NoteActionWidget(
-            title: "افزودن به علاقه مندی ها",
-            icon: CupertinoIcons.heart_fill,
+            title: liked ? "حذف از علاقه مندی ها" :"افزودن به علاقه مندی ها",
+            icon: liked ? CupertinoIcons.heart : CupertinoIcons.heart_fill,
             onTap: () {},
           )
         ],

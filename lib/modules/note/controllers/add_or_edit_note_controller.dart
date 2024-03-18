@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_note_app/core/constants/storage_keys.dart';
 import 'package:flutter_note_app/core/database/models/category.dart';
 import 'package:flutter_note_app/core/database/models/note.dart';
+import 'package:flutter_note_app/modules/note/controllers/note_controller.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -32,6 +33,8 @@ class AddOrEditNoteController extends GetxController {
       } else {
         await noteBox.add(newNote);
       }
+      Get.find<NoteController>().noteList.clear();
+      Get.find<NoteController>().fetchNotes();
     }
   }
 
