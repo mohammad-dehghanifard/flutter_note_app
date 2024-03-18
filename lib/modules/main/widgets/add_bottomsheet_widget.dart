@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/core/database/models/note.dart';
 import 'package:flutter_note_app/modules/home/widgets/add_category_dialog.dart';
 import 'package:flutter_note_app/modules/note/pages/add_or_edit_note_page.dart';
 import 'package:get/get.dart';
@@ -25,7 +26,7 @@ class AddBottomSheetWidget extends StatelessWidget {
           _AddItemButton(
             onTap:() {
               Get.back();
-               Get.to(const AddOrEditNotePage());
+               Get.to(AddOrEditNotePage());
             },
             icon: Icons.note_alt_rounded,
             title: "یادداشت",

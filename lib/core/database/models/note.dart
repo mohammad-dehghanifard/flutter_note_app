@@ -5,6 +5,11 @@ part 'note.g.dart';
 
 @HiveType(typeId: 0)
 class Note extends HiveObject{
+  Note({
+    this.title,
+    this.content,
+    this.category,
+  });
   @HiveField(0)
   String? title;
   @HiveField(1)
