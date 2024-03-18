@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_note_app/modules/main/controllers/navigation_controller.dart';
+import 'package:flutter_note_app/modules/main/widgets/add_bottomsheet_widget.dart';
 import 'package:get/get.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
@@ -68,7 +69,7 @@ class _NavigationAddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-
+          showModalBottomSheet(context: context, builder: (context) => const AddBottomSheetWidget());
       },
       child: Container(
         width: 60,
