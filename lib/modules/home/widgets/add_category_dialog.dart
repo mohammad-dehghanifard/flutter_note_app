@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_note_app/core/widgets/button_widget.dart';
 import 'package:flutter_note_app/core/widgets/text_field_widget.dart';
+import 'package:flutter_note_app/modules/home/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
 class AddCategoryDialog extends StatelessWidget {
@@ -8,6 +9,7 @@ class AddCategoryDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<HomeController>();
     return  Dialog(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12)
@@ -21,7 +23,7 @@ class AddCategoryDialog extends StatelessWidget {
             children: [
               const Text("ایجاد دسته بندی جدید"),
               const SizedBox(height: 12),
-              const TextFieldWidget(hint: "نام دسته بندی را وارد کنید"),
+              TextFieldWidget(controller: controller.newCategoryTextController,hint: "نام دسته بندی را وارد کنید"),
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -29,7 +31,10 @@ class AddCategoryDialog extends StatelessWidget {
                   ButtonWidget(
                       width: MediaQuery.sizeOf(context).width * 0.3,
                       text: "ایجاد",
-                      onTap: () {}),
+                      onTap: () {
+                        Get.back();
+                        controller.addCategoryToHive();
+                      }),
                   ButtonWidget(
                       width: MediaQuery.sizeOf(context).width * 0.3,
                       text: "لغو",

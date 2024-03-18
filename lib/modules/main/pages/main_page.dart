@@ -22,16 +22,14 @@ class MainPage extends StatelessWidget {
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(25),
-              child: Positioned.fill(
-                child: IndexedStack(
-                  index: controller.selectedIndex,
-                  children:  const [
-                    HomePage(),
-                    AllNotePage(),
-                    FavoriteNotePage(),
-                    SettingPage()
-                  ],
-                ),
+              child: IndexedStack(
+                index: controller.selectedIndex,
+                children:  const [
+                  HomePage(),
+                  AllNotePage(),
+                  FavoriteNotePage(),
+                  SettingPage()
+                ],
               ),
             ),
           ),

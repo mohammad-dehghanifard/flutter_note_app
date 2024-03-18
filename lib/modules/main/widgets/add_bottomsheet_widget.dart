@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_note_app/modules/main/widgets/add_category_dialog.dart';
+import 'package:flutter_note_app/modules/home/widgets/add_category_dialog.dart';
 import 'package:flutter_note_app/modules/note/pages/add_or_edit_note_page.dart';
 import 'package:get/get.dart';
 

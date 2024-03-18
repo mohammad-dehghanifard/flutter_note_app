@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/core/database/models/category.dart';
+import 'package:flutter_note_app/modules/home/controllers/home_controller.dart';
 import 'package:flutter_note_app/modules/home/widgets/note_category_widget.dart';
 import 'package:get/get.dart';
 
@@ -10,19 +12,27 @@ class HomePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("نوشته ها"),
+        const Text("دسته بندی ها"),
         const SizedBox(height: 12),
-        Expanded(
-            child: GridView.builder(
-              itemCount: 10,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  mainAxisExtent: MediaQuery.sizeOf(context).height / 9
-              ),
-              itemBuilder: (context, index) => NoteCategoryWidget(title: "یادداشت شخصی",notes: index * 2),
-            )
+        GetBuilder<HomeController>(
+          init: HomeController(),
+          builder: (controller) {
+            return Expanded(
+                child: GridView.builder(
+                  itemCount: controller.categoryList.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      mainAxisExtent: MediaQuery.sizeOf(context).height / 9
+                  ),
+                  itemBuilder: (context, index) {
+                    final Category category = controller.categoryList[index];
+                    return NoteCategoryWidget(title: category.title ?? "",notes: category.notes.length);
+                  },
+                )
+            );
+          }
         )
       ],
     );
