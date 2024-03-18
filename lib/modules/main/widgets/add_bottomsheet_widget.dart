@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/modules/main/widgets/add_category_dialog.dart';
 import 'package:get/get.dart';
 
 class AddBottomSheetWidget extends StatelessWidget {
@@ -12,7 +13,10 @@ class AddBottomSheetWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
             _AddItemButton(
-            onTap:() {},
+            onTap:() {
+              Get.back();
+              showDialog(context: context, builder: (context) => const AddCategoryDialog());
+            },
             icon: Icons.category,
             title: "دسته بندی",
           ),
