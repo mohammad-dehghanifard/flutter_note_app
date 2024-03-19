@@ -36,6 +36,7 @@ class NoteController extends GetxController {
     Get.back();
     note.isFavorite = !note.isFavorite;
     note.save();
+    update();
   }
 //=================================== life cycle ===============================
 
