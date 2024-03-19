@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_note_app/core/constants/storage_keys.dart';
 import 'package:flutter_note_app/core/database/models/category.dart';
 import 'package:flutter_note_app/core/database/models/note.dart';
+import 'package:flutter_note_app/modules/home/controllers/home_controller.dart';
 import 'package:flutter_note_app/modules/note/controllers/note_controller.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -32,10 +33,23 @@ class AddOrEditNoteController extends GetxController {
         note?.save();
       } else {
         await noteBox.add(newNote);
+        selectedCategory!.notes.add(newNote);
       }
-      Get.find<NoteController>().noteList.clear();
-      Get.find<NoteController>().fetchNotes();
+      _updateNoteList();
+      _updateCategoryList();
     }
+  }
+
+  void _updateNoteList() {
+    final controller = Get.find<NoteController>();
+    controller.noteList.clear();
+    controller.fetchNotes();
+  }
+
+  void _updateCategoryList(){
+    final controller = Get.find<HomeController>();
+    controller.categoryList.clear();
+    controller.fetchCategoryList();
   }
 
 //============================ LifeCycle =======================================
