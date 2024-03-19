@@ -28,7 +28,7 @@ class NoteWidget extends StatelessWidget {
               Text(note.title!),
               IconButton(
                   onPressed: () {
-                    showModalBottomSheet(context: context, builder: (context) => NoteActionBottomSheet(liked: note.isFavorite));
+                    showModalBottomSheet(context: context, builder: (context) => NoteActionBottomSheet(note: note));
                   },
                   icon: const Icon(Icons.more_vert)),
             ],
