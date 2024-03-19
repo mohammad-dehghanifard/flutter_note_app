@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_note_app/core/database/models/note.dart';
 import 'package:flutter_note_app/modules/note/controllers/note_controller.dart';
+import 'package:flutter_note_app/modules/note/pages/add_or_edit_note_page.dart';
 import 'package:get/get.dart';
 
 class NoteActionBottomSheet extends StatelessWidget {
@@ -18,7 +19,10 @@ class NoteActionBottomSheet extends StatelessWidget {
           _NoteActionWidget(
             title: "مشاهده نوشته",
             icon: Icons.remove_red_eye,
-            onTap: () {},
+            onTap: () {
+              Get.back(); // close bottom sheet
+              Get.to(AddOrEditNotePage(note: note));
+              },
           ),
           _NoteActionWidget(
             title: "حذف نوشته",
@@ -29,8 +33,8 @@ class NoteActionBottomSheet extends StatelessWidget {
           ),
           _NoteActionWidget(
             title: note.isFavorite ? "حذف از علاقه مندی ها" :"افزودن به علاقه مندی ها",
-            icon: note.isFavorite ? CupertinoIcons.heart : CupertinoIcons.heart_fill,
-            onTap: () {},
+            icon: note.isFavorite ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+            onTap: () => controller.updateNoteFavorite(note),
           )
         ],
       ),

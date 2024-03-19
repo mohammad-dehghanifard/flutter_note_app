@@ -56,6 +56,8 @@ class AddOrEditNoteController extends GetxController {
   @override
   void onInit() {
     if(note != null) {
+      noteTitle.text = note!.title!;
+      noteContent.text = note!.content!;
       selectedCategory = note?.category;
       update();
     }

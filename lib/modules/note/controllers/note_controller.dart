@@ -32,6 +32,11 @@ class NoteController extends GetxController {
     controller.fetchCategoryList();
   }
 
+  void updateNoteFavorite(Note note) {
+    Get.back();
+    note.isFavorite = !note.isFavorite;
+    note.save();
+  }
 //=================================== life cycle ===============================
 
 @override
