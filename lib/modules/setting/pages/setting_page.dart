@@ -8,23 +8,22 @@ import 'package:get/get.dart';
 class SettingPage extends StatelessWidget {
    const SettingPage({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
-
-    final List<SettingButtonWidget> buttons = [
-      SettingButtonWidget(onTap: () {
-        showDialog(context: context, builder: (context) => const ChangeUserNameDialogWidget());
-      }, title: "تغییر نام کاربری", icon: Icons.edit),
-      SettingButtonWidget(onTap: () => Get.to(const SetPassWordPage()), title: "تنظیم رمز عبور", icon: Icons.lock),
-      SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
-      SettingButtonWidget(onTap: () {}, title: "انتخاب تصویر پروفایل", icon: Icons.person),
-    ];
 
     return  GetBuilder<SettingController>(
       init: SettingController(),
       builder: (controller) {
+
+        final List<SettingButtonWidget> buttons = [
+          SettingButtonWidget(onTap: () {
+            showDialog(context: context, builder: (context) => const ChangeUserNameDialogWidget());
+          }, title: "تغییر نام کاربری", icon: Icons.edit),
+          SettingButtonWidget(onTap: () => Get.to(const SetPassWordPage()), title: controller.hasPassWord! ? "تغییر رمز عبور": "تنظیم رمز عبور", icon: Icons.lock),
+          SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
+          SettingButtonWidget(onTap: () {}, title: "انتخاب تصویر پروفایل", icon: Icons.person),
+        ];
+
         return Column(
           children: [
              Row(
