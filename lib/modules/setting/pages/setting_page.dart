@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_note_app/modules/setting/controllers/setting_controller.dart';
 import 'package:flutter_note_app/modules/setting/pages/set_password_page.dart';
+import 'package:flutter_note_app/modules/setting/pages/set_profile_image.dart';
 import 'package:flutter_note_app/modules/setting/widgets/chnage_username_dialog_widget.dart';
 import 'package:flutter_note_app/modules/setting/widgets/setting_button_widget.dart';
 import 'package:get/get.dart';
@@ -21,14 +22,14 @@ class SettingPage extends StatelessWidget {
           }, title: "تغییر نام کاربری", icon: Icons.edit),
           SettingButtonWidget(onTap: () => Get.to(const SetPassWordPage()), title: controller.hasPassWord! ? "تغییر رمز عبور": "تنظیم رمز عبور", icon: Icons.lock),
           SettingButtonWidget(onTap: () {}, title: "درباره ما", icon: Icons.code),
-          SettingButtonWidget(onTap: () {}, title: "انتخاب تصویر پروفایل", icon: Icons.person),
+          SettingButtonWidget(onTap: () => Get.to(const SetProfileImage()), title: "انتخاب تصویر پروفایل", icon: Icons.person),
         ];
 
         return Column(
           children: [
              Row(
               children: [
-                const CircleAvatar(),
+                 CircleAvatar(child: controller.profile != null? Image.asset(controller.profile!) : null),
                 const SizedBox(width: 8),
                 Text(controller.username ?? "کاربر مهمان")
               ],

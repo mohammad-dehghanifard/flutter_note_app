@@ -9,11 +9,13 @@ class SettingController extends GetxController {
   final TextEditingController passwordText = TextEditingController();
   SharedPreferences? prefs;
   String? username;
+  String? profile;
   bool? hasPassWord;
 //================================= methods ====================================
   Future<void> initialPrefs() async {
     prefs = await SharedPreferences.getInstance();
     username = prefs!.getString(StorageKeys.username);
+    profile = prefs!.getString(StorageKeys.profile);
     update();
   }
   void changeUserName() async {
@@ -39,6 +41,12 @@ class SettingController extends GetxController {
     } else {
       return true;
     }
+  }
+  Future<void> changeProfile(String imagePath) async {
+    await prefs?.setString(StorageKeys.profile, imagePath);
+    Get.back();
+    profile = prefs?.getString(StorageKeys.profile);
+    update();
   }
 //================================= life cycle =================================
  @override
