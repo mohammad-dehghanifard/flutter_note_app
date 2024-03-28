@@ -24,7 +24,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
-      obscureText: observe,
+      maxLines: widget.maxLine,
+      obscureText: widget.inputType == TextInputType.visiblePassword? observe : false,
       keyboardType: widget.inputType,
       decoration:  InputDecoration(
         hintText: widget.hint,
