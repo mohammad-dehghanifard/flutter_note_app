@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TextFieldWidget extends StatefulWidget {
-  const TextFieldWidget({super.key, this.hint, this.controller, this.validator,this.hasBorder = true,this.maxLine = 1,this.inputType});
+  const TextFieldWidget({super.key, this.hint, this.controller, this.validator,this.hasBorder = true,this.maxLine = 1,this.inputType = TextInputType.text});
   final String? hint;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool hasBorder;
   final int maxLine;
-  final TextInputType? inputType;
+  final TextInputType inputType;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -24,7 +24,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
-      maxLines: widget.maxLine,
       obscureText: observe,
       keyboardType: widget.inputType,
       decoration:  InputDecoration(
