@@ -24,6 +24,7 @@ class LoginWithPassWordPage extends StatelessWidget {
                   const SizedBox(height: 32),
                   TextFieldWidget(
                       controller: controller.inputPassWord,
+                      inputType: TextInputType.visiblePassword,
                       hint: "رمز عبور خود را وارد کنید"),
                   const SizedBox(height: 32),
                   ButtonWidget(
