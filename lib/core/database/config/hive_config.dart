@@ -8,7 +8,7 @@ class HiveConfig {
     await Hive.initFlutter();
     Hive.registerAdapter(NoteAdapter());
     Hive.registerAdapter(CategoryAdapter());
-    Hive.openBox<Category>(StorageKeys.hiveCategoryKey);
-    Hive.openBox<Note>(StorageKeys.hiveNoteKey);
+    await Hive.openBox<Category>(StorageKeys.hiveCategoryKey);
+    await Hive.openBox<Note>(StorageKeys.hiveNoteKey);
   }
 }
